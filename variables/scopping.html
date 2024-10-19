@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scopping Variables</title>
+</head>
+<body>
+    <script>
+
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables
+
+        //note: should not start with a capital
+        //note: should start with a-z letter
+        //note: can start with a underscore/dollar sign
+
+        //note: can start with a camelCase
+        const iLovePizza = true;
+
+        //note: should not start with kebab case (dashes)
+        // const = "this-is-kebabcase";
+
+        //function scoped
+        var firt = 'cool';
+        
+        //block scoped
+        let age; //using let you can declare a variable without initializing it:
+        age = 300;
+        
+        const cool = true;
+
+        //use const by default unless its gonna change in the future
+        
+        myName = "Binayyub";
+        myAge = 27;
+
+        myName;
+        myAge;
+
+        // You can declare and initialize a variable at the same time, like this:
+        let myDog = "Rover";
+        myDog = myName;
+
+        const bird = { species: "Kestrel" };
+        // console.log(bird.species); // "Kestrel"
+
+
+        bird.species = "Striated Caracara";
+        console.log(bird.species); // "Striated Caracara"
+
+
+        bird.species = "It has been changed";
+
+
+    </script> 
+</body>
+</html>

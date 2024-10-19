@@ -1,0 +1,301 @@
+<!-- eslint-disable -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>
+
+  </title>
+  <link rel="stylesheet" href="../../../base.css">
+</head>
+
+<body>
+  <script>
+    const text = `
+        Skip to main content
+        Skip to search
+        Skip to select language
+        Get real-time assistance with your coding queries. Try AI Help now!
+
+        References
+        Guides
+        Plus
+        Curriculum
+        Blog
+        Tools
+        New
+        Search MDN
+           
+
+        Search
+
+        Theme
+
+
+        User menu
+        References
+        JavaScript
+        Reference
+        Standard built-in objects
+        Map
+        Map.prototype.forEach()
+
+        Save
+
+        English (US)
+        Filter sidebar
+        Filter
+        Standard built-in objects
+        Map
+        Constructor
+        Map() constructor
+        Static methods
+        Map.groupBy()
+        Static properties
+        Map[Symbol.species]
+        Instance methods
+        Map.prototype.clear()
+        Map.prototype.delete()
+        Map.prototype.entries()
+        Map.prototype.forEach()
+        Map.prototype.get()
+        Map.prototype.has()
+        Map.prototype.keys()
+        Map.prototype.set()
+        Map.prototype[Symbol.iterator]()
+        Map.prototype.values()
+        Instance properties
+        Map.prototype.size
+        Inheritance
+        Object/Function
+        Static methods
+        Static properties
+        Instance methods
+        Instance properties
+        In this article
+        Try it
+        Syntax
+        Description
+        Examples
+        Specifications
+        Browser compatibility
+        See also
+        Map.prototype.forEach()
+        Baseline Widely available
+        The forEach() method of Map instances executes a provided function once per each key/value pair in this map, in insertion order.
+
+        Try it
+
+        Syntax
+        js
+        Copy to Clipboard
+        forEach(callbackFn)
+        forEach(callbackFn, thisArg)
+        Parameters
+        callbackFn
+        A function to execute for each entry in the map. The function is called with the following arguments:
+
+        value
+        Value of each iteration.
+
+        key
+        Key of each iteration.
+
+        map
+        The map being iterated.
+
+        thisArg Optional
+        A value to use as this when executing callbackFn.
+
+        Return value
+        None (undefined).
+
+        Description
+        The forEach method executes the provided callback once for each key of the map which actually exist. It is not invoked for keys which have been deleted. However, it is executed for values which are present but have the value undefined.
+
+        callback is invoked with three arguments:
+
+        the entry's value
+        the entry's key
+        the Map object being traversed
+        If a thisArg parameter is provided to forEach, it will be passed to callback when invoked, for use as its this value. Otherwise, the value undefined will be passed for use as its this value. The this value ultimately observable by callback is determined according to the usual rules for determining the this seen by a function.
+
+        Each value is visited once, except in the case when it was deleted and re-added before forEach has finished. callback is not invoked for values deleted before being visited. New values added before forEach has finished will be visited.
+
+        Examples
+        Printing the contents of a Map object
+        The following code logs a line for each element in an Map object:
+
+        js
+        Copy to Clipboard
+        function logMapElements(value, key, map) {
+        }
+        new Map([
+        ["foo", 3],
+        ["bar", {}],
+        ["baz", undefined],
+        ]).forEach(logMapElements);
+        // Logs:
+        // "map.get('foo') = 3"
+        // "map.get('bar') = [object Object]"
+        // "map.get('baz') = undefined"
+        Specifications
+        Specification
+        ECMAScript Language Specification
+        # sec-map.prototype.foreach
+        Browser compatibility
+        Report problems with this compatibility data on GitHub
+        desktop	mobile	server
+        Chrome
+        Edge
+        Firefox
+        Opera
+        Safari
+        Chrome Android
+        Firefox for Android
+        Opera Android
+        Safari on iOS
+        Samsung Internet
+        WebView Android
+        Deno
+        Node.js
+        forEach
+
+        38
+        Toggle history	
+        12
+        Toggle history	
+        25
+        Toggle history	
+        25
+        Toggle history	
+        8
+        Toggle history	
+        38
+        Toggle history	
+        25
+        Toggle history	
+        25
+        Toggle history	
+        8
+        Toggle history	
+        3.0
+        Toggle history	
+        38
+        Toggle history	
+        1.0
+        Toggle history	
+        0.12.0
+        Toggle history
+        Legend
+        Tip: you can click/tap on a cell for more information.
+
+        Full support
+        Full support
+        See also
+        Array.prototype.forEach()
+        Set.prototype.forEach()
+        Help improve MDN
+
+        Was this page helpful to you?
+
+        Yes
+
+        No
+        Learn how to contribute.
+        This page was last modified on Aug 24, 2023 by MDN contributors.
+
+        View this page on GitHub • Report a problem with this content
+        Your blueprint for a better internet.
+
+        MDN on Mastodon
+        MDN on X (formerly Twitter)
+        MDN on GitHub
+        MDN Blog RSS Feed
+        MDN
+        About
+        Blog
+        Careers
+        Advertise with us
+        Support
+        Product help
+        Report an issue
+        Our communities
+        MDN Community
+        MDN Forum
+        MDN Chat
+        Developers
+        Web Technologies
+        Learn Web Development
+        MDN Plus
+        Hacks Blog
+        Website Privacy Notice
+        Cookies
+        Legal
+        Community Participation Guidelines
+        Visit Mozilla Corporation’s not-for-profit parent, the Mozilla Foundation.
+        Portions of this content are ©1998–2024 by individual mozilla.org contributors. Content available under a Creative Commons license.
+    `;
+
+    // Lets convert to ana array
+    const everything = text.split(''); // we split it based on nothing
+    
+    function isValidCharacter(char){
+        return char.match(/[a-z0-9]/i);
+    }
+
+    // function lowerCase(char){
+    //     return char.toLowerCase();
+    // }
+
+    // Same as above fn
+    const lowerCase = char => char.toLowerCase();
+
+    function instanceCounter(counts, char){
+      counts[char]
+      // if exist
+      ? counts[char] = counts[char] + 1
+      // if does not exist
+      : counts[char] = 1;
+
+      return counts;
+    }
+
+    const result = text
+      .split('') // split each char into an item of array
+      .filter(isValidCharacter)
+      .map(lowerCase) // convert every letter to lowerCase
+      .reduce(instanceCounter, {})
+
+    function sortByValue(a, b){
+      return a[1] - b[1]; // to sort by the value using its index
+    }
+
+    const sortedResult = Object
+      .entries(result)
+      .sort(sortByValue);
+      console.log(sortedResult); // It worked
+
+    // To give us an array, key, and counts
+    // console.log(Object.entries(result));
+
+
+
+
+    // const result = everything.filter(char => {
+    //     // if that charcter is a-zA-Z0-9, then we will keep it
+    //     if(char.match(/[a-z0-9]/i)){ //match athrough z
+    //     // if(char.match(/[a-z0-9]/i)){ // i flag case insensitive
+    //         return true;
+    //     }
+    //     else{
+    //         return false
+    //     }
+    // })
+  </script>
+</body>
+
+</html>

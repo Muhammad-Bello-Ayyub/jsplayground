@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+
+    <button id="button_A">Press me</button>
+    <h3 id="heading_A">No click yet</h3>
+
+    
+    <script>
+        // 'use strict'
+        // These are different ways to declare variables
+        // var first = 'Faisal';
+        const buttonA = document.querySelector("#button_A");
+        const headingA = document.querySelector("#heading_A");
+
+        let count = 1;
+        // const cool = true;
+        // first = 'Amina' //set to new value
+
+        // cool = false; //you can't reassign a const
+
+        //code block uses braces without semicolons
+        buttonA.onclick = () => {
+            buttonA.textContent = "Try again!";
+            headingA.textContent = `${count} clicks so far`;
+            count ++;
+        };
+        // var dog = 'woof';
+        // dog = 'snikkers';
+
+    </script>
+</body>
+</html>
